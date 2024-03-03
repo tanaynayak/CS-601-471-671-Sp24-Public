@@ -41,7 +41,6 @@ class CausalSelfAttention(nn.Module):
         #   Name the matrix `causal_mask`
         # Hint: you can check torch.tril for creating the matrix with the help of torch.ones.
         
-        
         causal_mask = torch.tril(torch.ones(config.block_size, config.block_size))
         # your code ends here
 
@@ -50,13 +49,12 @@ class CausalSelfAttention(nn.Module):
         # register the mask as a buffer so it's not updated as a model parameter
         # but can still be used in the forward pass & saved to the state_dict
         self.register_buffer("causal_mask", causal_mask)
+
         self.n_head = config.n_head
         self.n_embd = config.n_embd
 
     def forward(self, x):
         B, T, C = x.size() # batch size, sequence length, embedding dimensionality (n_embd)
-
-        # TODO: implement the forward pass of the causal self-attention layer.
         # project the input to key, query, value vectors
         # each of shape (B, T, n_embd)
         q, k ,v  = self.c_attn(x).split(self.n_embd, dim=2)
@@ -70,6 +68,8 @@ class CausalSelfAttention(nn.Module):
         # k = k.view(B, T, self.n_head, C // self.n_head).transpose(1, 2) # (B, n_head, T, n_embd / n_head)
         # similarly, implement the query and value projections
     
+        k = k.view(B, T, self.n_head, C // self.n_head).transpose(1, 2) # (B, n_head, T, n_embd / n_head)
+        # similarly, implement the query and value projections
 
 
         # causal self-attention; Self-attend: (B, n_head, T, n_embd / n_head) x (B, n_head, n_embd / n_head, T) -> (B, n_head, T, T)
@@ -108,8 +108,6 @@ class CausalSelfAttention(nn.Module):
 
         y = self.resid_dropout(self.c_proj(y))
         return y
-
-
 class Block(nn.Module):
     """ an unassuming Transformer block """
 
