@@ -1,0 +1,76 @@
+distilBERT-base-uncased: 
+
+1: lr = 1e-4, epochs = 7. (THIS ONE BEST)
+Average DEV metrics: accuracy={'accuracy': 0.6996941896024464}
+ - Average TEST metrics: accuracy={'accuracy': 0.6867554309740714}
+
+2: lr = 1e-4, epochs = 9.
+- Average DEV metrics: accuracy={'accuracy': 0.674006116207951}
+ - Average TEST metrics: accuracy={'accuracy': 0.695865451997197}
+
+3: lr = 5e-4, epochs = 7.
+ - Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6194814295725298}
+
+4: lr = 5e-4, epochs = 9.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6208829712683952}
+
+5: lr = 1e-3, epochs = 7.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6313945339873861}
+
+6: lr = 1e-3, epochs = 9.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6299929922915207}
+
+BERT-base-uncased:
+
+1: lr = 1e-4, epochs = 7. (THIS IS BEST ONE)
+- Average DEV metrics: accuracy={'accuracy': 0.7027522935779816}
+ - Average TEST metrics: accuracy={'accuracy': 0.677645409950946}
+
+2: lr = 1e-4, epochs = 9.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.611072179397337}
+
+3: lr = 5e-4, epochs = 7.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6306937631394534}
+
+4: lr = 5e-4, epochs = 9.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6313945339873861}
+
+5: lr = 1e-3, epochs = 7.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6362999299229152}
+
+6: lr = 1e-3, epochs = 9.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6215837421163279}
+
+3.2.1
+
+RoBERTa-base:
+
+type=full
+lr = 1e-4, epochs = 7.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6454099509460406}
+
+3.2.2
+
+type=head
+lr = 1e-4, epochs = 7.
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6384022424667134}
+
+3.2.3
+
+type=prefix
+lr = 1e-4 epochs = 7. batch = 16 (half)
+- Average DEV metrics: accuracy={'accuracy': 0.6217125382262997}
+ - Average TEST metrics: accuracy={'accuracy': 0.6208829712683952}
+
+
