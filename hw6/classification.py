@@ -54,10 +54,12 @@ class CustomModelforSequenceClassification(nn.Module):
             sentence_representation = last_hidden_state.mean(dim=1)
             logits = self.classifier(sentence_representation)
     	    # your code ends here
+
         
         elif self.type == 'prefix':
 
             # TODO: implement the forward function for the prefix-tuned model
+
             #raise NotImplementedError("You need to implement the forward function for the prefix-tuned model")
 
             # the prefix is at self.prefix, but this is only one prefix, we want to append it to each instance in a batch
@@ -69,6 +71,7 @@ class CustomModelforSequenceClassification(nn.Module):
             # concatentate the input embeddings and our prefix, make sure to put them into our gpu
             # get the input embeddings
             # Hint: you can use self.model.embeddings.word_embeddings to get the input embeddings
+
             input_embeddings = self.model.embeddings.word_embeddings(input_ids)
             # concatenate the input embeddings and the prefix
             # Hint: check torch.cat for how to concatenate the tensors
@@ -79,6 +82,8 @@ class CustomModelforSequenceClassification(nn.Module):
             # name the final tensor as `inputs_embeds`
             prefix_attention_mask = torch.ones(batch_size, prefix_length).to(input_ids.device)
             attention_mask = torch.cat([prefix_attention_mask, attention_mask], dim=1)
+
+
             # modify attention mask
             # we need to add the prefix to the attention mask
             # the mask on the prefix should be 1, with the dimension of (batch_size, prefix_length)
@@ -88,17 +93,15 @@ class CustomModelforSequenceClassification(nn.Module):
 
             # pass the input embeddings and the attention mask into the model
             # you can do this by passing a keyword argument "inputs_embeds" to model.forward
+
             output = self.model(inputs_embeds=inputs_embeds, attention_mask=attention_mask)
             last_hidden_state = output.last_hidden_state
-            # your code ends here
 
-            # get the last hidden state from the output object, take the mean, and pass it into the classifier
-            # Hint: same as the full model and head-tuned model
+
+
             sentence_representation = last_hidden_state.mean(dim=1)
             logits = self.classifier(sentence_representation)
 
-
-            # your code ends here
 
         return {"logits": logits}
     
@@ -194,8 +197,6 @@ def evaluate_model(model, dataloader, device):
         labels = batch['labels'].to(device)
 
 
-        # forward pass
-        # name the output as `output`
         output = model(input_ids, attention_mask=attention_mask)
         # your code ends here
 
@@ -242,10 +243,11 @@ def train(mymodel, num_epochs, train_dataloader, validation_dataloader, test_dat
         # name the optimizer as `custom_optimizer`
         # Hints: you can refer to how we do this for the optimizer above
         custom_optimizer = torch.optim.AdamW(classifier_params, lr=lr)
-        # your code ends here
+
     
     elif mymodel.type == "prefix":
         # TODO: implement the optimizer for prefix-tuned model
+
         #raise NotImplementedError("You need to implement the optimizer for prefix-tuned model")
         # you need to get the parameters of the prefix, you can do this by calling mymodel.prefix
         # name the parameters as `prefix_params`
@@ -253,6 +255,7 @@ def train(mymodel, num_epochs, train_dataloader, validation_dataloader, test_dat
         # you also need to get the parameters of the classifier (head), you can do this by calling mymodel.head.parameters()
         # name the parameters as `classifier_params`
         classifier_params = list(mymodel.classifier.parameters())
+
         # your code ends here
         # group the parameters together
         custom_optimizer = torch.optim.AdamW([prefix_params] + list(classifier_params), lr=lr)
@@ -336,6 +339,7 @@ def train(mymodel, num_epochs, train_dataloader, validation_dataloader, test_dat
                 lr_scheduler.step()
                 custom_optimizer.zero_grad()
             predictions = logits
+
             predictions = torch.argmax(predictions, dim=1)
             
             # update metrics

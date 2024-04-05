@@ -19,3 +19,10 @@ hw3/model_hidden_512 -> 512.pth
 hw3/model_hidden_512.pth
 hw4/model.pth
 hw4/pretrained_fixed_window_lm.dat
+hw1/.ipynb_checkpoints/created_notebook-checkpoint.ipynb
+hw1/.ipynb_checkpoints/model-checkpoint.py
+hw1/.ipynb_checkpoints/test-checkpoint.py
+hw1/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+hw1/__pycache__/basics.cpython-310.pyc
+hw1/__pycache__/model.cpython-310.pyc
+

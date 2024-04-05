@@ -94,6 +94,7 @@ def evaluate_model(model, dataloader, device):
     for batch in dataloader:
         # TODO: implement the evaluation function
         #raise NotImplementedError("You need to implement the evaluation function")
+
         # get the input_ids, attention_mask from the batch and put them on the device
         # Hints:
         # - see the getitem function in the BoolQADataset class for how to access the input_ids and attention_mask
@@ -106,7 +107,6 @@ def evaluate_model(model, dataloader, device):
         # forward pass
         # name the output as `output`
         output = model(input_ids, attention_mask=attention_mask)
-
         # your code ends here
 
         predictions = output.logits
@@ -184,8 +184,6 @@ def train(mymodel, num_epochs, train_dataloader, validation_dataloader, test_dat
 
             #mymodel.train()
             #optimizer.zero_grad()
-
-
             # forward pass
             # name the output as `output`
             # Hints: refer to the evaluate_model function on how to get the predictions (logits)
@@ -210,6 +208,7 @@ def train(mymodel, num_epochs, train_dataloader, validation_dataloader, test_dat
 
             # your code ends here
             predictions = output.logits
+
             predictions = torch.argmax(predictions, dim=1)
 
             # update metrics
