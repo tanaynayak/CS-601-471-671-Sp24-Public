@@ -1,8 +1,28 @@
 .vscode/settings.json
 .DS_Store
+*/.ipynb_checkpoints/*
+*/__pycache__/*
+hw3/model_lr_0.01.pth
+hw3/model_lr_0.1.pth
+hw3/model_lr_0.02.pth
+hw3/model_lr_0.2.pth
+hw3/model_lr_0.03.pth
+hw3/model_lr_0.05.pth
+hw3/model_lr_0.5.pth
+hw3/model_activation_GeLU.pth
+hw3/model_activation_ReLU.pth
+hw3/model_activation_Sigmoid.pth
+hw3/model_activation_Tanh.pth
+hw3/model_hidden_512 -> 512 -> 512.pth
+hw3/model_hidden_None.pth
+hw3/model_hidden_512 -> 512.pth
+hw3/model_hidden_512.pth
+hw4/model.pth
+hw4/pretrained_fixed_window_lm.dat
 hw1/.ipynb_checkpoints/created_notebook-checkpoint.ipynb
 hw1/.ipynb_checkpoints/model-checkpoint.py
 hw1/.ipynb_checkpoints/test-checkpoint.py
 hw1/.ipynb_checkpoints/Untitled-checkpoint.ipynb
 hw1/__pycache__/basics.cpython-310.pyc
 hw1/__pycache__/model.cpython-310.pyc
+
